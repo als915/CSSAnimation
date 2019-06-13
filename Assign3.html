@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Animation</title>
+    <style>
+    	body
+    	{
+    		margin:0;
+    		height: 100vh;
+    		display: flex;
+    		align-items:center;
+    		justify-content: center;
+            font-family: Orator Std;
+            font-size: 1em; 
+            color: white;
+            text-align: center;
+    	}
+
+        #tornado
+        {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+    	#drawing
+    	{
+    		width: 200px;
+    		height: 200px;
+    		perspective: 400px;
+    	}
+
+    	.house
+    	{
+    		width: 100%;
+    		height: 100%;
+    		position: relative;
+    		transform-style: preserve-3d; 
+    	}
+
+    	.base
+    	{
+			position: absolute;
+	    	width: 200px;
+	    	height: 200px;
+	    	opacity: 0.8;
+	    	border: 1px solid black;
+	    	
+    	}
+
+    	.roof
+    	{
+    		width: 0;
+    		height: 0;
+    		border-left: 100px solid transparent;
+    		border-right: 100px solid transparent;
+    		border-bottom: 200px solid blue;
+    		position: absolute;	
+    	}
+    	
+    	.sides
+    	{
+    		width: 200px;
+    		height: 200px;
+    		position: absolute;	
+    		opacity: 0.8;
+    	}
+
+    	#side3
+    	{
+    		width: 200px;
+    		height: 220px;
+    		position: absolute;
+    		opacity: 0.8;
+    	}
+
+    	#side4
+    	{
+    		width: 200px;
+    		height: 220px;
+    		position: absolute;
+    		opacity: 0.8;
+    		font-family: Orator Std;
+    	}
+    	
+    	.bottom
+    	{
+    		width:200px;
+    		height: 200px;
+    		position: absolute;	
+    		opacity: 0.8;
+    	}
+
+    	/*Front*/
+    	#base1
+    	{
+    		transform: translateY(100px) translateZ(100px);
+    		background-color: red;
+            line-height: 100px;
+    	}
+    	#roof1
+    	{
+    		transform: translateY(-100px) translateZ(100px);
+            line-height: 50px;
+    	}
+
+    	/*Back*/
+    	#base2
+    	{
+    		transform:translateY(100px) translateZ(-100px);
+    		background-color: red;
+    	}
+    	#roof2
+    	{
+    		transform: translateY(-100px) translateZ(-100px);
+    	}
+
+    	/*Sides*/
+    	#side1
+    	{
+    		transform: translateY(100px) rotateY(-90deg) translateZ(100px);
+    		background-color: yellow;
+    	}
+
+    	#side2
+    	{
+    		transform: translateY(100px) rotateY(90deg) translateZ(100px);
+    		background-color: orange;
+    	}
+
+    	#side3
+    	{
+    		transform: translateY(-60px) translateX(37px) rotateY(-90deg) rotateX(27deg) translateZ(100px);
+    		background-color: blue;
+    	}
+    	#side4
+    	{
+    		transform: translateY(-60px) translateX(-37px) rotateY(90deg) rotateX(27deg) translateZ(100px);
+    		background-color: blue;
+    	}
+
+    	/*Bottom*/
+    	.bottom
+    	{
+    		transform: translateY(100px) rotateX(-90deg) translateZ(100px);
+    		background-color: green;
+    	}
+
+    	/*Animation*/
+    	@keyframes tornado1 
+			{
+				0%/*from*/{transform: rotateY(0deg) rotateX(0deg);}
+                50% {transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg) ;}
+				100%/*to*/{transform: rotateY(360deg) rotateX(360deg) rotateZ(360deg);}
+			}
+
+        @keyframes tornado2 
+            {
+                0%/*from*/{transform: rotateY(0deg) rotateX(0deg);}
+                100% {transform: scale3d(5,5,5); }
+            }
+        
+    	.house
+    	{
+    		animation-name: tornado1; 
+    		animation-duration: 6s; 
+    		animation-timing-function: linear;
+    		animation-iteration-count: infinite;
+    	}
+        .house:hover
+        {
+            animation-name: tornado2;
+            animation-duration: 3s; 
+            animation-timing-function: linear;
+            animation-iteration-count: infinite; 
+        }
+
+
+ 
+	</style>
+  </head>
+
+  <body>
+    <video autoplay muted loop id="tornado">
+        <source src="tornado.mp4" type="video/mp4">
+    </video>
+  	
+    <div id="drawing">
+  		<div class="house">
+  			<div class="base" id="base1"> In Kansas Anymore </div>
+  			<div class="base" id="base2"> </div>
+  			<div class="roof" id="roof1"> I Don't Think We're</div>
+  			<div class="roof" id="roof2"> </div>
+  			<div class="sides"id="side1"> </div>
+  			<div class="sides"id="side2"> </div>
+  			<div class="sides"id="side3"> </div>
+  			<div class="sides"id="side4"> </div>
+  			<div class='bottom'> </div>
+  		</div>
+  	</div>
+
+    
+  </body>
+</html>
